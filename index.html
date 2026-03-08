@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo List</title>
+  </head>
+  <body>
+    <h1>Todo List</h1>
+
+    <div id="todo-form">
+      <input type="text" id="title" placeholder="Title" />
+      <input type="text" id="description" placeholder="Description" />
+      <input type="text" id="dueDate" />
+
+      <select name="" id="priority">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+
+      <button id="addTodo">Add Todo</button>
+    </div>
+
+    <div id="todo-list"></div>
+
+    <script src="todo.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
