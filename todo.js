@@ -1,6 +1,6 @@
 // Todo class goes here
 
-class Todo {
+export class Todo {
   constructor(title, description, dueDate, priority) {
     this.title = title;
     this.description = description;
@@ -9,5 +9,21 @@ class Todo {
     this.completed = false;
     this.notes = [];
     this.checklist = [];
+  }
+
+  toggleComplete() {
+    this.completed = !this.completed;
+  }
+
+  addNote(note) {
+    this.notes.push(note);
+  }
+
+  addChecklistItem(item) {
+    this.checklist.push(item);
+  }
+
+  toggleChecklistItem(index) {
+    this.checklist[index].done = !this.checklist[index].done;
   }
 }
