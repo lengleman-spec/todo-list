@@ -1,5 +1,6 @@
 // Main app logic (managing multiple projects)
 import { Project } from "./project.js";
+import { Todo } from "./todo.js";
 
 // use IIFE so that the data is private
 export const App = (() => {
@@ -20,8 +21,21 @@ export const App = (() => {
     return projects;
   }
 
+  // creates a new todo
+  function addTodoToProject(
+    projectIndex,
+    title,
+    description,
+    dueDate,
+    priority,
+  ) {
+    // find the correct project and adds the todo to the project
+    const newTodo = new Todo(title, description, dueDate, priority);
+    projects[projectIndex].addTodo(newTodo);
+  }
+
   // return the public functions we want accessible
-  return { addProject, getProjects };
+  return { addProject, getProjects, addTodoToProject };
 })();
 
 window.App = App;
