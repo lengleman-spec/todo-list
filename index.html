@@ -8,23 +8,39 @@
   <body>
     <h1>Todo List</h1>
 
-    <div id="todo-form">
-      <input type="text" id="title" placeholder="Title" />
-      <input type="text" id="description" placeholder="Description" />
-      <input type="text" id="dueDate" />
+    <!-- Projects Section -->
+    <h2>Projects</h2>
+    <div id="project-list">
+      <form action="" id="add-project-form">
+        <input
+          type="text"
+          id="project-name"
+          placeholder="New Project Name"
+          required />
 
-      <select name="" id="priority">
+        <button type="submit">Add Project</button>
+      </form>
+    </div>
+
+    <h2>Todos</h2>
+    <form id="add-todo-form">
+      <input type="text" id="todo-title" placeholder="Title" required />
+      <input type="text" id="todo-desc" placeholder="Description" />
+      <input type="text" id="todo-due" />
+
+      <select name="" id="todo-priority">
         <option value="Low">Low</option>
         <option value="Medium">Medium</option>
         <option value="High">High</option>
       </select>
 
-      <button id="addTodo">Add Todo</button>
-    </div>
+      <button type="submit" id="addTodo">Add Todo</button>
+    </form>
 
     <div id="todo-list"></div>
 
-    <script src="todo.js"></script>
+    <script src="todo.js" type="module"></script>
     <script src="app.js" type="module"></script>
+    <script src="dom.js" type="module"></script>
   </body>
 </html>
