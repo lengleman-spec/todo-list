@@ -2,6 +2,31 @@
 // import the app module:
 import { App } from "./app.js";
 const todoForm = document.getElementById("add-todo-form");
+const todoListDiv = document.getElementById("todo-list");
+
+function renderTodos(projectIndex) {
+  // Remove old todos so they don't duplicate every time it's rendered
+  todoListDiv.innerHTML = "";
+  const project = App.getProjects()[projectIndex];
+
+  // Loop through all todos in the project:
+  project.todos.forEach((todo, index) => {
+    const todoDiv = document.createElement("div");
+    todoDiv.textContent = `${todo.title} - ${todo.dueDate} - ${todo.priority}`;
+    if (todo.completed) {
+      todoDiv.classList.add("completed");
+    }
+
+    // Toggle completion on click
+    todoDiv.addEventListener("click", () => {
+      todo.toggleCompleted();
+      renderTodos(projectIndex);
+    });
+
+    todoListDiv.appendChild(todoDiv);
+  });
+}
+
 todoForm.addEventListener("submit", (event) => {
   //stop the page from reloading with:
   event.preventDefault();

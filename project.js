@@ -1,4 +1,6 @@
 // Project class (list of todos) goes here
+import { Todo } from "./todo.js";
+
 export class Project {
   constructor(name) {
     this.name = name;
