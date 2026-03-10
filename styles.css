@@ -1,0 +1,15 @@
+.todo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.todo-container button {
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.completed {
+  text-decoration: line-through;
+}
