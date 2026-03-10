@@ -1,3 +1,33 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f4f4f9;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+#project-name {
+  margin: 20px 0 10px;
+  font-size: 1.8rem;
+  color: #34495e;
+  border-bottom: 2px solid #34495e;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
 .todo-container {
   display: flex;
   justify-content: space-between;
