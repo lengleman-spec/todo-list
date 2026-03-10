@@ -7,6 +7,7 @@ const projectNameH2 = document.getElementById("project-name");
 
 const projectForm = document.getElementById("add-project-form");
 const projectNameInput = document.getElementById("project-name-input");
+const deleteProjectBtn = document.getElementById("delete-project-btn");
 
 // Track the current project index
 let currentProjectIndex = 0;
@@ -77,6 +78,21 @@ projectForm.addEventListener("submit", (e) => {
   App.getProjects().push(new Project(projectName));
   projectNameInput.value = "";
   renderTodos(App.getProjects().length - 1); // Switch to new project
+});
+
+// Delete Project (not todos)
+deleteProjectBtn.addEventListener("click", () => {
+  const projects = App.getProjects();
+
+  if (projects.length <= 1) {
+    alert("You must have at least one project.");
+    return;
+  }
+
+  projects.splice(currentProjectIndex, 1);
+
+  currentProjectIndex = 0;
+  renderTodos(currentProjectIndex);
 });
 
 // Initial render
