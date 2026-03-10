@@ -88,11 +88,42 @@ form button:hover {
 }
 
 .todo-container button {
-  padding: 4px 8px;
+  padding: 6px 12px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.todo-container button:hover {
+  background: #c0392b;
 }
 
 .completed {
   text-decoration: line-through;
   color: #95a5a6;
+}
+
+#project-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#delete-project-btn {
+  padding: 6px 12px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#delete-project-btn:hover {
+  background: #c0392b;
 }
