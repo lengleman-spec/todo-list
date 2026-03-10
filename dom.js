@@ -8,9 +8,28 @@ const projectNameH2 = document.getElementById("project-name");
 const projectForm = document.getElementById("add-project-form");
 const projectNameInput = document.getElementById("project-name-input");
 const deleteProjectBtn = document.getElementById("delete-project-btn");
+const projectListDiv = document.getElementById("project-list");
 
 // Track the current project index
 let currentProjectIndex = 0;
+
+// Render Projects
+function renderProjects() {
+  const projects = App.getProjects();
+
+  projectListDiv.innerHTML = "";
+
+  projects.forEach((project, index) => {
+    const projectBtn = document.createElement("button");
+    projectBtn.textContent = project.name;
+
+    projectBtn.addEventListener("click", () => {
+      renderTodos(index);
+    });
+
+    projectListDiv.appendChild(projectBtn);
+  });
+}
 
 // Render todos and project name
 function renderTodos(projectIndex = 0) {
@@ -48,6 +67,8 @@ function renderTodos(projectIndex = 0) {
     container.appendChild(deleteBtn);
     todoListDiv.appendChild(container);
   });
+
+  renderProjects();
 }
 
 // Add new todo
