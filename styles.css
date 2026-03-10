@@ -54,11 +54,37 @@ form button {
   transition: 0.2s;
 }
 
+form button:hover {
+  background-color: #2980b9;
+}
+
+#todo-list {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .todo-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px;
+  padding: 12px 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: 0.2s;
+}
+
+.todo-container:hover {
+  box-shadow: 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.todo-container div {
+  flex: 1;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 .todo-container button {
@@ -68,4 +94,5 @@ form button {
 
 .completed {
   text-decoration: line-through;
+  color: #95a5a6;
 }
