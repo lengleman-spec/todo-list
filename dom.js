@@ -1,11 +1,26 @@
 import { App } from "./app.js";
+import { Project } from "./project.js";
 
 const todoForm = document.getElementById("add-todo-form");
 const todoListDiv = document.getElementById("todo-list");
+const projectNameH2 = document.getElementById("project-name");
 
+const projectForm = document.getElementById("add-project-form");
+const projectNameInput = document.getElementById("project-name-input");
+
+// Track the current project index
+let currentProjectIndex = 0;
+
+// Render todos and project name
 function renderTodos(projectIndex = 0) {
-  todoListDiv.innerHTML = "";
   const project = App.getProjects()[projectIndex];
+  currentProjectIndex = projectIndex;
+
+  // Update project name display
+  projectNameH2.textContent = project.name;
+
+  // Clear todos
+  todoListDiv.innerHTML = "";
 
   project.todos.forEach((todo, index) => {
     const container = document.createElement("div");
@@ -23,7 +38,7 @@ function renderTodos(projectIndex = 0) {
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
     deleteBtn.addEventListener("click", (e) => {
-      e.stopPropagation(); // prevents toggling completion
+      e.stopPropagation();
       App.removeTodoFromProject(projectIndex, index);
       renderTodos(projectIndex);
     });
@@ -34,6 +49,7 @@ function renderTodos(projectIndex = 0) {
   });
 }
 
+// Add new todo
 todoForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -42,10 +58,25 @@ todoForm.addEventListener("submit", (e) => {
   const dueDate = document.getElementById("todo-due").value;
   const priority = document.getElementById("todo-priority").value;
 
-  App.addTodoToProject(0, title, description, dueDate, priority);
-  renderTodos(0);
+  App.addTodoToProject(
+    currentProjectIndex,
+    title,
+    description,
+    dueDate,
+    priority,
+  );
+  renderTodos(currentProjectIndex);
 
   todoForm.reset();
+});
+
+// Add new project
+projectForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const projectName = projectNameInput.value;
+  App.getProjects().push(new Project(projectName));
+  projectNameInput.value = "";
+  renderTodos(App.getProjects().length - 1); // Switch to new project
 });
 
 // Initial render
